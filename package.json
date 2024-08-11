@@ -9,6 +9,9 @@
     "clean": "farm clean"
   },
   "dependencies": {
+    "@varlet/ui": "^3.3.13",
+    "@vueuse/core": "^10.11.1",
+    "axios": "^1.7.3",
     "vue": "^3.4.0",
     "vue-router": "4"
   },
