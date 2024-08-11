@@ -1,19 +1,16 @@
-interface AuthorizeParams {
+export interface AuthorizeParams {
     client_id: string;
     response_type: string;
     scope: string;
     redirect_uri: string;
 }
 
-export class AuthorizeData {
+export interface ClientInfo {
+    status: number;       // 默认为 200
+    id: number;
+    app_name: string;
+    app_desc: string;
     client_id: string;
-    response_type: string;
-    scope: string[];
+    allowed_scopes: string;
     redirect_uri: string;
-    constructor(params: AuthorizeParams) {
-        this.client_id = params.client_id;
-        this.response_type = params.response_type;
-        this.scope = params.scope.split(" ");
-        this.redirect_uri = params.redirect_uri;
-    }
 }
