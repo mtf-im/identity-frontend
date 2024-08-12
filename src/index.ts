@@ -3,6 +3,7 @@ import {createRouter, createWebHashHistory} from "vue-router";
 
 import './style.css';
 import Varlet from '@varlet/ui'
+import vuetify from './plugins/vuetify';
 import App from './App.vue';
 import IndexView from "./views/IndexView.vue";
 import '@varlet/ui/es/style'
@@ -33,4 +34,5 @@ const router = createRouter({
 
 app.use(router);
 app.use(Varlet);
+app.use(vuetify);
 app.mount('#app');

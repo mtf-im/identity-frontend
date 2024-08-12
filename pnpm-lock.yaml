@@ -23,6 +23,9 @@ importers:
       vue-router:
         specifier: '4'
         version: 4.4.3(vue@3.4.37)
+      vuetify:
+        specifier: ^3.6.14
+        version: 3.6.14(vue@3.4.37)
     devDependencies:
       '@farmfe/cli':
         specifier: ^1.0.2
@@ -287,12 +290,14 @@ packages:
     engines: {node: '>= 10'}
     cpu: [x64]
     os: [linux]
+    libc: [glibc]
 
   '@farmfe/core-linux-x64-musl@1.3.12':
     resolution: {integrity: sha512-7eBUeH/tYTZUQt5Cohq9ZgR8jVvzhKeg6mpxxESp3eYM7md7bXcuVFbF5tzT1as4MALJsKKTP0Kga/7Hlbddgw==}
     engines: {node: '>= 10'}
     cpu: [x64]
     os: [linux]
+    libc: [musl]
 
   '@farmfe/core-win32-arm64-msvc@1.3.12':
     resolution: {integrity: sha512-OjdZoGaBMg5tOmDrO9tegQvrVY3QsNBxSq8TZtCmr4gyj+pPzlHwY6e99Wh9UwMPvCL7N9muXPGbLBQpfwkB+g==}
@@ -390,46 +395,55 @@ packages:
     resolution: {integrity: sha512-jMYvxZwGmoHFBTbr12Xc6wOdc2xA5tF5F2q6t7Rcfab68TT0n+r7dgawD4qhPEvasDsVpQi+MgDzj2faOLsZjA==}
     cpu: [arm]
     os: [linux]
+    libc: [glibc]
 
   '@rollup/rollup-linux-arm-musleabihf@4.20.0':
     resolution: {integrity: sha512-1asSTl4HKuIHIB1GcdFHNNZhxAYEdqML/MW4QmPS4G0ivbEcBr1JKlFLKsIRqjSwOBkdItn3/ZDlyvZ/N6KPlw==}
     cpu: [arm]
     os: [linux]
+    libc: [musl]
 
   '@rollup/rollup-linux-arm64-gnu@4.20.0':
     resolution: {integrity: sha512-COBb8Bkx56KldOYJfMf6wKeYJrtJ9vEgBRAOkfw6Ens0tnmzPqvlpjZiLgkhg6cA3DGzCmLmmd319pmHvKWWlQ==}
     cpu: [arm64]
     os: [linux]
+    libc: [glibc]
 
   '@rollup/rollup-linux-arm64-musl@4.20.0':
     resolution: {integrity: sha512-+it+mBSyMslVQa8wSPvBx53fYuZK/oLTu5RJoXogjk6x7Q7sz1GNRsXWjn6SwyJm8E/oMjNVwPhmNdIjwP135Q==}
     cpu: [arm64]
     os: [linux]
+    libc: [musl]
 
   '@rollup/rollup-linux-powerpc64le-gnu@4.20.0':
     resolution: {integrity: sha512-yAMvqhPfGKsAxHN8I4+jE0CpLWD8cv4z7CK7BMmhjDuz606Q2tFKkWRY8bHR9JQXYcoLfopo5TTqzxgPUjUMfw==}
     cpu: [ppc64]
     os: [linux]
+    libc: [glibc]
 
   '@rollup/rollup-linux-riscv64-gnu@4.20.0':
     resolution: {integrity: sha512-qmuxFpfmi/2SUkAw95TtNq/w/I7Gpjurx609OOOV7U4vhvUhBcftcmXwl3rqAek+ADBwSjIC4IVNLiszoj3dPA==}
     cpu: [riscv64]
     os: [linux]
+    libc: [glibc]
 
   '@rollup/rollup-linux-s390x-gnu@4.20.0':
     resolution: {integrity: sha512-I0BtGXddHSHjV1mqTNkgUZLnS3WtsqebAXv11D5BZE/gfw5KoyXSAXVqyJximQXNvNzUo4GKlCK/dIwXlz+jlg==}
     cpu: [s390x]
     os: [linux]
+    libc: [glibc]
 
   '@rollup/rollup-linux-x64-gnu@4.20.0':
     resolution: {integrity: sha512-y+eoL2I3iphUg9tN9GB6ku1FA8kOfmF4oUEWhztDJ4KXJy1agk/9+pejOuZkNFhRwHAOxMsBPLbXPd6mJiCwew==}
     cpu: [x64]
     os: [linux]
+    libc: [glibc]
 
   '@rollup/rollup-linux-x64-musl@4.20.0':
     resolution: {integrity: sha512-hM3nhW40kBNYUkZb/r9k2FKK+/MnKglX7UYd4ZUy5DJs8/sMsIbqWK2piZtVGE3kcXVNj3B2IrUYROJMMCikNg==}
     cpu: [x64]
     os: [linux]
+    libc: [musl]
 
   '@rollup/rollup-win32-arm64-msvc@4.20.0':
     resolution: {integrity: sha512-psegMvP+Ik/Bg7QRJbv8w8PAytPA7Uo8fpFjXyCRHWm6Nt42L+JtoqH8eDQ5hRP7/XW2UiIriy1Z46jf0Oa1kA==}
@@ -904,18 +918,21 @@ packages:
     engines: {node: '>= 10'}
     cpu: [arm64]
     os: [linux]
+    libc: [glibc]
 
   farm-plugin-replace-dirname-linux-arm64-musl@0.2.1:
     resolution: {integrity: sha512-m3gH8ggczbRYTHZSNp3LjIQIcqhvDO4O78bxXc8O1ozKD8M47/YfQLyQV06M7H4rZ8s6XV3Bb1kAcRAASp3M5A==}
     engines: {node: '>= 10'}
     cpu: [arm64]
     os: [linux]
+    libc: [glibc]
 
   farm-plugin-replace-dirname-linux-x64-gnu@0.2.1:
     resolution: {integrity: sha512-MehKkoM2RFw3sCnEu9nCbXKjxtC3hfTad0h/dC+Z8iEBcLEReVLoNzHWWUa6BxkxqDtB82/BWO/ObSUj/VUnwQ==}
     engines: {node: '>= 10'}
     cpu: [x64]
     os: [linux]
+    libc: [glibc]
 
   farm-plugin-replace-dirname-linux-x64-musl@0.2.1:
     resolution: {integrity: sha512-o1qPZi16N/sHOteZYJVv6UmZFK3QKpVQrywk/4spJI0mPH9A9Y+G6iBE2Tqjb3d+1Hb6phr++EBJHZ2x1ajtGQ==}
@@ -1736,6 +1753,25 @@ packages:
       typescript: '*'
     peerDependenciesMeta:
       typescript:
+        optional: true
+
+  vuetify@3.6.14:
+    resolution: {integrity: sha512-iSa3CgdTEt/7B0aGDmkBARe8rxDDycEYHu1zNtOf1Xpvs/Tv7Ql5yHGqM2XCY0h7SL8Dme39pJIovzg3q4JLbQ==}
+    engines: {node: ^12.20 || >=14.13}
+    peerDependencies:
+      typescript: '>=4.7'
+      vite-plugin-vuetify: '>=1.0.0'
+      vue: ^3.3.0
+      vue-i18n: ^9.0.0
+      webpack-plugin-vuetify: '>=2.0.0'
+    peerDependenciesMeta:
+      typescript:
+        optional: true
+      vite-plugin-vuetify:
+        optional: true
+      vue-i18n:
+        optional: true
+      webpack-plugin-vuetify:
         optional: true
 
   walkdir@0.4.1:
@@ -3486,6 +3522,10 @@ snapshots:
       '@vue/runtime-dom': 3.4.37
       '@vue/server-renderer': 3.4.37(vue@3.4.37)
       '@vue/shared': 3.4.37
+
+  vuetify@3.6.14(vue@3.4.37):
+    dependencies:
+      vue: 3.4.37
 
   walkdir@0.4.1: {}
 
