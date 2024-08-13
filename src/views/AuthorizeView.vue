@@ -64,6 +64,23 @@ const error = computed(() => {
     return '';
 })
 
+function get_icon_name(scope: string) {
+    switch (scope) {
+        case 'openid':
+            return 'card-account-details';
+        case 'profile':
+            return 'account-circle';
+        case 'email':
+            return 'email';
+        case 'phone':
+            return 'phone';
+        case 'address':
+            return 'map-marker-radius';
+        default:
+            return 'information';
+    }
+}
+
 // Theme
 // StyleProvider(Themes.md3Dark);
 </script>
@@ -88,7 +105,7 @@ const error = computed(() => {
                 <var-divider />
 
                 <div v-for="x in data.scope.split(' ')">
-                    <var-cell border icon="https://openteens.org/img/logo/build/circle.png" :title="x.toUpperCase()"
+                    <var-cell border :icon="get_icon_name(x)" :title="x.toUpperCase()"
                         description="The OpenID of your account, which is cretically dangerous">
                         <template #extra>
                             <var-icon name="information" />
