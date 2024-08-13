@@ -5,8 +5,8 @@ import './style.css';
 import Varlet from '@varlet/ui'
 import App from './App.vue';
 import IndexView from "./views/IndexView.vue";
-import '@varlet/ui/es/style'
 import AuthorizeView from "./views/AuthorizeView.vue";
+import '@varlet/ui/es/style'
 
 // import { createVuetify } from 'vuetify';
 // import * as components from 'vuetify/components'
@@ -35,18 +35,7 @@ const router = createRouter({
     routes
 });
 
-// const vuetify = createVuetify({
-//     components,
-//     directives,
-// })
-
 app.use(router);
 app.use(Varlet);
-// app.use(vuetify);
 app.mount('#app');
 
-// material
-// app.material.theme.register('default', {
-//     primary: 'cyan',
-//     accent: 'pink'
-// })

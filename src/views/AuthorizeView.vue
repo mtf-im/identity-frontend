@@ -111,11 +111,7 @@ function get_scope_detail(scope: string) {
             };
     }
 }
-var scope_detail = [];
-for (let i = 0; i < data.scope.split(' ').length; i++) {
-    scope_detail.push(get_scope_detail(data.scope.split(' ')[i]));
-}
-
+var scope_detail = data.scope.split(" ").map(get_scope_detail);
 // Theme
 // StyleProvider(Themes.md3Dark);
 </script>
@@ -144,7 +140,7 @@ for (let i = 0; i < data.scope.split(' ').length; i++) {
                     <var-cell border :icon="x.icon" :title="x.title" :description="x.desc"
                         :class="'permfield-dangerlv--' + x.danger">
                         <template #extra>
-                            <var-icon name="information" />
+                            <var-icon name="information" class="transparent-50" />
                         </template>
                     </var-cell>
                 </div>
@@ -177,11 +173,19 @@ for (let i = 0; i < data.scope.split(' ').length; i++) {
 .var-paper {
     margin: 30px;
     padding: 20px;
+    width: 500px;
+    max-width: 90vw !important;
 }
 
 .var-avatar {
     background-color: transparent;
 }
+
+.transparent-50 {
+    opacity: 0.5;
+}
+
+/* Permission Sensitivity Alert */
 
 .permfield-dangerlv--0 {}
 
