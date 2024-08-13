@@ -4,6 +4,7 @@ import { AuthorizeParams, ClientInfo } from "../types.ts";
 import { computed, ref, watch } from "vue";
 import { useRouter } from "vue-router";
 import axios from 'axios';
+import { StyleProvider, Themes } from '@varlet/ui';
 
 const data = useUrlSearchParams<AuthorizeParams>('hash');
 const info = ref({
@@ -63,29 +64,69 @@ const error = computed(() => {
     return '';
 })
 
+// Theme
+// StyleProvider(Themes.md3Dark);
 </script>
 
 <template>
-    <div v-if="info.status === 0">
-        Loading...
-    </div>
-    <div id="authbox" v-else-if="error === ''">
-        应用 {{ info.app_name }} 正在请求以下权限:
-        <ul>
-            <li v-for="x in data.scope.split(' ')">
-                {{ x }}
-            </li>
-        </ul>
-        <var-button v-on:click="cancel">Cancel</var-button>&nbsp;
-        <var-button v-on:click="approve">Approve</var-button>
-    </div>
-    <div v-else>
-        Error: {{ error }}
-    </div>
+    <var-space id="mainbox" :size="[10, 10]" justify="space-between">
+        <div v-if="info.status === 0">
+            Loading...
+        </div>
+        <div id="authbox" v-else-if="error === ''">
+            <var-paper id="area-avatar" :radius="3">
+                <var-space align="center" justify="center">
+                    <var-avatar src="https://openteens.org/img/logo/build/circle.png" class="var-elevation--2" />
+                    <var-loading type="wave" />
+                    <var-avatar src="https://openteens.org/img/logo/build/circle.png" class="var-elevation--2" :round="false" />
+                </var-space>
+            </var-paper>
+        
+            <var-paper id="area-authorize" :elevation="2" :radius="8">
+                应用 <span class="app-name">{{ info.app_name }}</span> 正在请求以下权限:
+
+                <var-divider />
+
+                <div v-for="x in data.scope.split(' ')">
+                    <var-cell border icon="https://openteens.org/img/logo/build/circle.png" :title="x.toUpperCase()"
+                        description="The OpenID of your account, which is cretically dangerous">
+                        <template #extra>
+                            <var-icon name="information" />
+                        </template>
+                    </var-cell>
+                </div>
+
+                <var-divider />
+
+                <var-row>
+                    <var-col :span="11">
+                        <var-button block v-on:click="cancel">Cancel</var-button>
+                    </var-col>
+                    <var-col :span="2"></var-col>
+                    <var-col :span="11">
+                        <var-button block type="primary" v-on:click="approve">Approve</var-button>
+                    </var-col>
+                </var-row>
+            </var-paper>
+        </div>
+        <div v-else>
+            Error: {{ error }}
+        </div>
+    </var-space>
 </template>
 
 <style scoped>
-body {
-    background-color: red;
+.app-name {
+    font-weight: bold;
+    color: var(--color-info);
+}
+
+.var-paper {
+    margin: 30px;
+    padding: 20px;
+}
+
+.var-avatar {
+    background-color: transparent;
 }
 </style>
