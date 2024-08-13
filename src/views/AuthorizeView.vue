@@ -64,21 +64,56 @@ const error = computed(() => {
     return '';
 })
 
-function get_icon_name(scope: string) {
+// get scope detail
+function get_scope_detail(scope: string) {
     switch (scope) {
         case 'openid':
-            return 'card-account-details';
+            return {
+                "title": "OpenID",
+                "desc": "The OpenID of your account",
+                "icon": "card-account-details",
+                "danger": 0
+            };
         case 'profile':
-            return 'account-circle';
+            return {
+                "title": "Profile",
+                "desc": "Your profile information",
+                "icon": "account-circle",
+                "danger": 0
+            };
         case 'email':
-            return 'email';
+            return {
+                "title": "Email",
+                "desc": "Your email address",
+                "icon": "email",
+                "danger": 0
+            };
         case 'phone':
-            return 'phone';
+            return {
+                "title": "Phone",
+                "desc": "Your phone number",
+                "icon": "phone",
+                "danger": 0
+            };
         case 'address':
-            return 'map-marker-radius';
+            return {
+                "title": "Address",
+                "desc": "Your address",
+                "icon": "map-marker",
+                "danger": 1
+            };
         default:
-            return 'information';
+            return {
+                "title": "Unknown",
+                "desc": "Unknown scope",
+                "icon": "help",
+                "danger": 2
+            };
     }
+}
+var scope_detail = [];
+for (let i = 0; i < data.scope.split(' ').length; i++) {
+    scope_detail.push(get_scope_detail(data.scope.split(' ')[i]));
 }
 
 // Theme
@@ -95,18 +130,19 @@ function get_icon_name(scope: string) {
                 <var-space align="center" justify="center">
                     <var-avatar src="https://openteens.org/img/logo/build/circle.png" class="var-elevation--2" />
                     <var-loading type="wave" />
-                    <var-avatar src="https://openteens.org/img/logo/build/circle.png" class="var-elevation--2" :round="false" />
+                    <var-avatar src="https://openteens.org/img/logo/build/circle.png" class="var-elevation--2"
+                        :round="false" />
                 </var-space>
             </var-paper>
-        
+
             <var-paper id="area-authorize" :elevation="2" :radius="8">
                 应用 <span class="app-name">{{ info.app_name }}</span> 正在请求以下权限:
 
                 <var-divider />
 
-                <div v-for="x in data.scope.split(' ')">
-                    <var-cell border :icon="get_icon_name(x)" :title="x.toUpperCase()"
-                        description="The OpenID of your account, which is cretically dangerous">
+                <div v-for="x in scope_detail">
+                    <var-cell border :icon="x.icon" :title="x.title" :description="x.desc"
+                        :class="'permfield-dangerlv--' + x.danger">
                         <template #extra>
                             <var-icon name="information" />
                         </template>
@@ -145,5 +181,20 @@ function get_icon_name(scope: string) {
 
 .var-avatar {
     background-color: transparent;
+}
+
+.permfield-dangerlv--0 {}
+
+.permfield-dangerlv--1 {
+    color: var(--color-warning);
+}
+
+.permfield-dangerlv--2 {
+    color: var(--color-danger);
+}
+
+.permfield-dangerlv--3 {
+    background-color: var(--color-danger);
+    color: white;
 }
 </style>
