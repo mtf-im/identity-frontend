@@ -1,6 +1,8 @@
 import { createApp } from 'vue';
 import { createRouter, createWebHashHistory } from "vue-router";
 
+import i18n from './i18n/i18n.ts'; // 引入 i18n 配置
+
 import './style.css';
 import Varlet from '@varlet/ui'
 import App from './App.vue';
@@ -36,6 +38,7 @@ const router = createRouter({
 });
 
 app.use(router);
+app.use(i18n);
 app.use(Varlet);
 app.mount('#app');
 
