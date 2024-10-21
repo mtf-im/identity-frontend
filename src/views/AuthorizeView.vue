@@ -127,9 +127,9 @@ var scope_detail = data.scope.split(" ").map(get_scope_detail);
         <!-- <div id="authbox"> -->
             <var-paper id="area-avatar" :radius="3">
                 <var-space align="center" justify="center">
-                    <var-avatar src="https://openteens.org/img/logo/build/circle.png" class="var-elevation--2" />
-                    <var-loading type="wave" />
-                    <var-avatar src="https://openteens.org/img/logo/build/circle.png" class="var-elevation--2"
+                    <var-avatar src="https://mtf.im/tpf.svg" class="var-elevation--2" />
+                    <var-loading type="disappear" color="#aaa" />
+                    <var-avatar src="https://inswan.cn/assets/community_test_logo.webp" class="var-elevation--2"
                         :round="false" />
                 </var-space>
             </var-paper>
@@ -156,7 +156,7 @@ var scope_detail = data.scope.split(" ").map(get_scope_detail);
                     </var-col>
                     <var-col :span="2"></var-col>
                     <var-col :span="11">
-                        <var-button block type="primary" v-on:click="approve">{{ $t('authorize.button.approve') }}</var-button>
+                        <var-button block color="pink" v-on:click="approve">{{ $t('authorize.button.approve') }}</var-button>
                     </var-col>
                 </var-row>
             </var-paper>
