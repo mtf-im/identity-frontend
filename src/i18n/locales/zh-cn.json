@@ -17,5 +17,8 @@
     "authorize.button.cancel": "取消",
     "authorize.button.approve": "接受",
     "error.title": "出错啦！",
-    "error.tip": "错误信息：{error}"
+    "error.tip": "错误信息：{error}",
+    "footer.user-agreement": "用户协议",
+    "footer.privacy-policy": "隐私政策",
+    "footer.about-us": "关于我们"
 }

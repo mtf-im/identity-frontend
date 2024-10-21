@@ -124,7 +124,7 @@ var scope_detail = data.scope.split(" ").map(get_scope_detail);
             {{ $t('loading') }}
         </div>
         <div id="authbox" v-else-if="error === ''">
-        <!-- <div id="authbox"> -->
+            <!-- <div id="authbox"> -->
             <var-paper id="area-avatar" :radius="3">
                 <var-space align="center" justify="center">
                     <var-avatar src="https://mtf.im/tpf.svg" class="var-elevation--2" />
@@ -136,7 +136,7 @@ var scope_detail = data.scope.split(" ").map(get_scope_detail);
 
             <var-paper id="area-authorize" :elevation="2" :radius="8">
                 <!-- 应用 <span class="app-name">{{ info.app_name }}</span> 正在请求以下权限: -->
-                 {{ $t('authorize.title',{name: info.app_name}) }}
+                {{ $t('authorize.title', { name: info.app_name }) }}
                 <var-divider />
 
                 <div v-for="x in scope_detail">
@@ -156,20 +156,34 @@ var scope_detail = data.scope.split(" ").map(get_scope_detail);
                     </var-col>
                     <var-col :span="2"></var-col>
                     <var-col :span="11">
-                        <var-button block color="pink" v-on:click="approve">{{ $t('authorize.button.approve') }}</var-button>
+                        <var-button block color="pink" v-on:click="approve">{{ $t('authorize.button.approve')
+                            }}</var-button>
                     </var-col>
                 </var-row>
             </var-paper>
         </div>
         <div v-else>
-            
+
             <var-paper id="area-authorize" :elevation="2" :radius="8">
                 <span class="error-title">{{ $t("error.title") }}</span>
                 <var-divider />
-                {{ $t("error.tip",{error: error}) }}
+                {{ $t("error.tip", { error: error }) }}
             </var-paper>
         </div>
     </var-space>
+    <var-divider>
+        <var-icon name="heart-outline" style="margin: 0 16px; color: pink" />
+    </var-divider>
+    <div class="footer">
+        <span>{{ new Date().getFullYear() }} MtF.im is made with <var-icon name="heart" color="pink" /></span>
+    </div>
+    <div class="footer">
+        <span><a href="/user-agreement">{{ $t("footer.user-agreement") }}</a></span>
+        <var-divider vertical />
+        <span><a href="/privacy-policy">{{ $t("footer.privacy-policy") }}</a></span>
+        <var-divider vertical />
+        <span><a href="//mtf.im/about-us">{{ $t("footer.about-us") }}</a></span>
+    </div>
 </template>
 
 <style scoped>
@@ -213,5 +227,23 @@ var scope_detail = data.scope.split(" ").map(get_scope_detail);
 .permfield-dangerlv--3 {
     background-color: var(--color-danger);
     color: white;
+}
+
+.footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #333;
+}
+
+.footer a {
+  font-size: 14px;
+  color: #888;
+  text-decoration: none;
+}
+.footer span {
+  font-size: 14px;
+  color: #888;
+  text-decoration: none;
 }
 </style>
