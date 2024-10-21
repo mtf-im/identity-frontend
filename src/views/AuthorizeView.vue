@@ -163,7 +163,11 @@ var scope_detail = data.scope.split(" ").map(get_scope_detail);
             </var-paper>
         </div>
         <div v-else>
-
+            <var-paper id="area-avatar" :radius="3">
+                <var-space align="center" justify="center">
+                    <var-result class="result" type="error"></var-result>
+                </var-space>
+            </var-paper>
             <var-paper id="area-authorize" :elevation="2" :radius="8">
                 <span class="error-title">{{ $t("error.title") }}</span>
                 <var-divider />
