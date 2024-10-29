@@ -1,18 +1,19 @@
-import { createI18n } from 'vue-i18n';
+import {createI18n} from 'vue-i18n';
 import zhCN from './locales/zh-CN.json';
-import {useTitle} from "@vueuse/core";
-import {computed} from "vue";
+import en from './locales/en.json';
 
 // 定义默认语言
 const defaultLocale = navigator.language; // 默认语言为浏览器默认语言
 
 // 创建 i18n 实例
 const i18n = createI18n({
-	locale: defaultLocale,
-	fallbackLocale: 'en', // 当未找到当前语言时使用备用语言
-	messages: {
-		'zh-CN': zhCN
-	},
+    locale: defaultLocale,
+    legacy: false,
+    fallbackLocale: 'en', // 当未找到当前语言时使用备用语言
+    messages: {
+        'zh-CN': zhCN,
+        'en': en // 不全，布局测试用
+    },
 });
 
 export default i18n;
