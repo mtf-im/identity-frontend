@@ -1,11 +1,10 @@
 <script setup lang="ts">
 import {useUrlSearchParams} from '@vueuse/core'
-import {AuthorizeParams, ClientInfo} from "../types.ts";
+import {AuthorizeParams, ClientInfo} from "../../types.ts";
 import {computed, ref, watch} from "vue";
 import {useRouter} from "vue-router";
 import axios from 'axios';
 import {useI18n} from 'vue-i18n';
-import {StyleProvider, Themes} from '@varlet/ui';
 
 const {t} = useI18n(); // 获取国际化的 `t` 函数
 const data = useUrlSearchParams<AuthorizeParams>('hash');
@@ -30,6 +29,7 @@ watch(() => data.client_id, async () => {
       "id": -1,
       "app_name": "",
       "app_desc": "",
+      "app_icon_url": "",
       "client_id": "",
       "allowed_scopes": "",
       "redirect_uri": ""
@@ -131,7 +131,7 @@ var scope_detail = data.scope.split(" ").map(get_scope_detail);
         <var-space align="center" justify="center">
           <var-avatar src="https://mtf.im/tpf.svg" class="var-elevation--2"/>
           <var-loading type="disappear" color="#aaa"/>
-          <var-avatar :src="info.app_icon_url ? info.app_icon_url : 'https://inswan.cn/assets/community_test_logo.webp'"
+          <var-avatar :src="info.app_icon_url ?? 'https://inswan.cn/assets/community_test_logo.webp'"
                       class="var-elevation--2"
                       :round="false"/>
         </var-space>

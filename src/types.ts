@@ -10,7 +10,18 @@ export interface ClientInfo {
     id: number;
     app_name: string;
     app_desc: string;
+    app_icon_url: string;
     client_id: string;
     allowed_scopes: string;
     redirect_uri: string;
+}
+
+export interface AuthTokenResponse {
+    token: string;
+}
+
+export interface AuthTokenPayload {
+    user_id: string;
+    created_at: number;
+    expire_at: number;
 }

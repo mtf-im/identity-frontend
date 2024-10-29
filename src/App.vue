@@ -4,6 +4,10 @@
       <RouterLink to="/">Go to Home</RouterLink>
       &nbsp;
       <RouterLink to="/authorize">Go to Authorize</RouterLink>
+      &nbsp;
+      <RouterLink to="/auth/login">Go to Login</RouterLink>
+      &nbsp;
+      <RouterLink to="/auth/signup">Go to Sign Up</RouterLink>
     </nav>
     <br>
   </div>
@@ -14,8 +18,9 @@
 </template>
 <script setup lang="ts">
 import {useRoute} from "vue-router";
-import {useTitle} from "@vueuse/core";
+import {useLocalStorage, useTitle} from "@vueuse/core";
 import {computed} from "vue";
+import i18n from "./i18n/i18n.ts";
 
 const route = useRoute();
 const title = computed(() => {
@@ -27,5 +32,8 @@ const title = computed(() => {
   }
   return title;
 });
+
+useLocalStorage("locale", i18n.global.locale);
+
 useTitle(title)
 </script>

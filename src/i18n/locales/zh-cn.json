@@ -20,5 +20,14 @@
     "error.tip": "错误信息：{error}",
     "footer.user-agreement": "用户协议",
     "footer.privacy-policy": "隐私政策",
-    "footer.about-us": "关于我们"
+    "footer.about-us": "关于我们",
+    "auth.title.login": "登录",
+    "auth.title.signup": "注册",
+    "auth.input.username": "用户名",
+    "auth.input.password": "密码",
+    "auth.button.login": "登录",
+    "auth.button.signup": "注册",
+    "auth.button.goLogin": "去登录",
+    "auth.button.goSignup": "去注册",
+    "error.invalid_credential": "错误的账号 / 密码"
 }
