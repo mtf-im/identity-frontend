@@ -155,12 +155,12 @@ var scope_detail = data.scope.split(" ").map(get_scope_detail);
 
         <var-row>
           <var-col :span="11">
-            <var-button block v-on:click="cancel">{{ $t('authorize.button.cancel') }}</var-button>
+            <var-button block v-on:click="cancel">{{ t('authorize.button.cancel') }}</var-button>
           </var-col>
           <var-col :span="2"></var-col>
           <var-col :span="11">
             <var-button block color="pink" v-on:click="approve">{{
-                $t('authorize.button.approve')
+                t('authorize.button.approve')
               }}
             </var-button>
           </var-col>
@@ -174,9 +174,9 @@ var scope_detail = data.scope.split(" ").map(get_scope_detail);
         </var-space>
       </var-paper>
       <var-paper id="area-authorize" :elevation="2" :radius="8">
-        <span class="error-title">{{ $t("error.title") }}</span>
+        <span class="error-title">{{ t("error.title") }}</span>
         <var-divider/>
-        {{ $t("error.tip", {error: error}) }}
+        {{ t("error.tip", {error: error}) }}
       </var-paper>
     </div>
   </var-space>
@@ -187,11 +187,11 @@ var scope_detail = data.scope.split(" ").map(get_scope_detail);
     <span>{{ new Date().getFullYear() }} MtF.im is made with <var-icon name="heart" color="pink"/></span>
   </div>
   <div class="footer">
-    <span><a href="/user-agreement">{{ $t("footer.user-agreement") }}</a></span>
+    <span><a href="/user-agreement">{{ t("footer.user-agreement") }}</a></span>
     <var-divider vertical/>
-    <span><a href="/privacy-policy">{{ $t("footer.privacy-policy") }}</a></span>
+    <span><a href="/privacy-policy">{{ t("footer.privacy-policy") }}</a></span>
     <var-divider vertical/>
-    <span><a href="//mtf.im/about-us">{{ $t("footer.about-us") }}</a></span>
+    <span><a href="//mtf.im/about-us">{{ t("footer.about-us") }}</a></span>
   </div>
 </template>
 

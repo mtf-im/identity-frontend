@@ -25,3 +25,7 @@ export interface AuthTokenPayload {
     created_at: number;
     expire_at: number;
 }
+
+export interface AuthForParams {
+    for?: string;
+}

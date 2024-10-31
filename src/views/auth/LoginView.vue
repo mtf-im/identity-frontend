@@ -2,14 +2,18 @@
 import {useI18n} from 'vue-i18n'
 import {computed, ref} from "vue";
 import {FetchError, ofetch} from "ofetch";
-import {AuthTokenResponse} from "../../types.ts";
+import {AuthForParams, AuthTokenResponse} from "../../types.ts";
 import {useAuthTokenStore} from "../../shared.ts";
 import {useCookies} from "@vueuse/integrations/useCookies";
+import {useRouter} from "vue-router";
+import {useUrlSearchParams} from "@vueuse/core";
 
-const {t} = useI18n()
+const {t} = useI18n();
+const router = useRouter();
+const params = useUrlSearchParams<AuthForParams>('hash');
 
 let authTokenStore = useAuthTokenStore();
-let cookies = useCookies(["token"]);
+let tokenCookies = useCookies(["token"]);
 
 let username = ref("");
 let password = ref("");
@@ -38,20 +42,23 @@ async function login() {
     });
     authTokenStore.addToken(resp.token);
     console.log(authTokenStore.validTokens);
-    cookies.set("token", resp.token);
+    tokenCookies.set("token", resp.token);
     loading.value = false;
+    if (params.for) {
+      await router.push(params.for);
+    }
   } catch (e) {
     if (!(e instanceof FetchError)) {
       console.log(e);
-      loading.value = false;
       return;
     }
-    loading.value = false;
     switch (e.statusCode) {
       case 401:
         error_detail.value = t("error.invalid_credential");
         break;
     }
+  } finally {
+    loading.value = false;
   }
 }
 
@@ -67,7 +74,10 @@ async function login() {
         <var-input class="col-group-comp" :placeholder="t('auth.input.password')" v-model="password"></var-input>
         <var-divider/>
         <div class="flex justify-end">
-          <var-button class="mx-4 min-w-32" text>{{ t("auth.button.goSignup") }}</var-button>
+          <var-button class="mx-4 min-w-32" text @click="router.push('/auth/signup')">{{
+              t("auth.button.goSignup")
+            }}
+          </var-button>
           <var-loading description="" :loading="loading">
             <var-button type="primary" class="min-w-24" color="pink" text-color="black" @click="login">
               {{ t("auth.button.login") }}

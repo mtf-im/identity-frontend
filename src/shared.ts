@@ -1,13 +1,8 @@
 import {defineStore} from "pinia";
 import {useLocalStorage} from "@vueuse/core";
-import {AuthTokenPayload} from "./types.ts";
-import {decodeJwt} from "jose";
 import {computed} from "vue";
+import {parseAuthToken} from "./utils.ts";
 
-
-function parseAuthToken(token: string): AuthTokenPayload {
-    return decodeJwt<AuthTokenPayload>(token);
-}
 
 export const useAuthTokenStore = defineStore("tokens", () => {
     const tokenStorage = useLocalStorage("tokens", new Map<string, string>());
