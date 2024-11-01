@@ -2,9 +2,10 @@
 import {useI18n} from 'vue-i18n'
 import {computed, ref} from "vue";
 import {FetchError, ofetch} from "ofetch";
-import {AuthTokenResponse} from "../../types.ts";
+import {AuthForParams, AuthTokenResponse} from "../../types.ts";
 import {useAuthTokenStore} from "../../shared.ts";
 import {useCookies} from "@vueuse/integrations/useCookies";
+import {router} from "../../router.ts";
 
 const {t} = useI18n()
 
@@ -79,7 +80,10 @@ async function signup() {
         <var-input class="col-group-comp" :placeholder="t('auth.input.password')" v-model="password"></var-input>
         <var-divider/>
         <div class="flex justify-end">
-          <var-button class="mx-4 min-w-32" text>{{ t("auth.button.goLogin") }}</var-button>
+          <var-button class="mx-4 min-w-32" text @click="router.push('/auth/login')">{{
+              t("auth.button.goLogin")
+            }}
+          </var-button>
           <var-loading description="" :loading="loading">
             <var-button type="primary" class="min-w-24" color="pink" text-color="black" @click="signup">
               {{ t("auth.button.signup") }}
