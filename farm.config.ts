@@ -22,6 +22,9 @@ export default defineConfig({
         proxy: {
             "/api": {
                 target: 'http://127.0.0.1:35271',
+            },
+            "/.well-known": {
+                target: 'http://127.0.0.1:35271',
             }
         }
     }
