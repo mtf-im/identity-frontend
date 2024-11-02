@@ -101,7 +101,7 @@ async function signup() {
             color="pink"
             text-color="black"
             @click="error_detail = ''">
-          知道了
+          {{ t("auth.button.ok")}}
         </var-button>
       </template>
     </var-result>

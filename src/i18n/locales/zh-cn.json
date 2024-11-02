@@ -31,5 +31,6 @@
     "auth.button.signup": "注册",
     "auth.button.goLogin": "去登录",
     "auth.button.goSignup": "去注册",
-    "error.invalid_credential": "错误的账号 / 密码"
+    "error.invalid_credential": "错误的账号 / 密码",
+    "auth.button.ok": "好"
 }
