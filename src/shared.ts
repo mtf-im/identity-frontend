@@ -11,7 +11,7 @@ export const useAuthTokenStore = defineStore("tokens", () => {
         const valid = new Map<string, string>();
         for (const user_id in tokenStorage.value) {
             const token = tokenStorage.value.get(user_id);
-            if (token && parseAuthToken(token).expire_at > (Date.now() / 1000)) {
+            if (token && parseAuthToken(token).exp > (Date.now() / 1000)) {
                 valid.set(user_id, token);
             }
         }

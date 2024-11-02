@@ -22,8 +22,8 @@ export interface AuthTokenResponse {
 
 export interface AuthTokenPayload {
     user_id: string;
-    created_at: number;
-    expire_at: number;
+    iat: number;
+    exp: number;
 }
 
 export interface AuthForParams {

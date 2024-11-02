@@ -9,7 +9,7 @@ export function checkLogin(): boolean {
     if (!(typeof token == "string")) return false;
     let parsed = parseAuthToken(token);
 
-    return parsed.expire_at > (Date.now() / 1000);
+    return parsed.exp > (Date.now() / 1000);
 }
 
 export function parseAuthToken(token: string): AuthTokenPayload {
