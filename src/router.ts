@@ -1,16 +1,18 @@
 import {createRouter, createWebHashHistory, RouteLocationRaw, RouteRecordRaw} from "vue-router";
-import IndexView from "./views/IndexView.vue";
-import AuthorizeView from "./views/authorize/AuthorizeView.vue";
-import SignUpView from "./views/auth/SignUpView.vue";
-import LoginView from "./views/auth/LoginView.vue";
 import {checkLogin} from "./utils.ts";
+
+const IndexView = () => import("./views/IndexView.vue");
+const AuthorizeView = () => import("./views/authorize/AuthorizeView.vue");
+const SignUpView = () => import("./views/auth/SignUpView.vue");
+const LoginView = () => import("./views/auth/LoginView.vue");
 
 const routes: RouteRecordRaw[] = [
     {
         path: '/',
         component: IndexView,
         meta: {
-            title: "Index"
+            title: "Index", 
+            showNav: true,
         }
     },
     {

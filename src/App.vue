@@ -1,5 +1,5 @@
 <template>
-  <div v-if="$route.meta.showNav === undefined ? true : $route.meta.showNav">
+  <div v-if="$route.meta.showNav === undefined ? false : $route.meta.showNav">
     <nav>
       <RouterLink to="/">Go to Home</RouterLink>
       &nbsp;
