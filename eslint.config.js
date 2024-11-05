@@ -16,5 +16,6 @@ export default [
         languageOptions: { parserOptions: { parser: tseslint.parser } },
     },
     { ignores: ["dist/**"] },
+    { rules: { "no-undef": "off" } },
     eslintConfigPrettier,
 ];

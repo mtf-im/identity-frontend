@@ -162,7 +162,7 @@ var scope_detail = data.scope.split(" ").map(get_scope_detail);
                 {{ $t("authorize.title", { name: info.app_name }) }}
                 <var-divider />
 
-                <div v-for="x in scope_detail">
+                <div v-for="x in scope_detail" :key="x.title">
                     <var-cell
                         border
                         :icon="x.icon"
