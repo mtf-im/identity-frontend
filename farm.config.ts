@@ -1,8 +1,8 @@
-import {defineConfig} from '@farmfe/core';
+import { defineConfig } from '@farmfe/core';
 import vue from '@vitejs/plugin-vue';
 import components from 'unplugin-vue-components/vite'
 import autoImport from 'unplugin-auto-import/vite'
-import {VarletImportResolver} from "@varlet/import-resolver";
+import { VarletImportResolver } from "@varlet/import-resolver";
 import postcss from "@farmfe/js-plugin-postcss"
 
 export default defineConfig({
@@ -12,7 +12,7 @@ export default defineConfig({
             resolvers: [VarletImportResolver()]
         }),
         autoImport({
-            resolvers: [VarletImportResolver({autoImport: true})]
+            resolvers: [VarletImportResolver({ autoImport: true })]
         }),
     ],
     plugins: [
