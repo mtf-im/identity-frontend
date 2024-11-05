@@ -5,6 +5,7 @@ import autoImport from 'unplugin-auto-import/vite'
 import { VarletImportResolver } from "@varlet/import-resolver";
 import postcss from "@farmfe/js-plugin-postcss"
 import VueI18nPlugin from "@intlify/unplugin-vue-i18n/vite"; 
+import visualizer from '@farmfe/js-plugin-visualizer'; 
 
 export default defineConfig({
     vitePlugins: [
@@ -22,6 +23,7 @@ export default defineConfig({
     ],
     plugins: [
         postcss(),
+        visualizer(), 
     ],
     server: {
         proxy: {
