@@ -4,6 +4,7 @@ import components from 'unplugin-vue-components/vite'
 import autoImport from 'unplugin-auto-import/vite'
 import { VarletImportResolver } from "@varlet/import-resolver";
 import postcss from "@farmfe/js-plugin-postcss"
+import VueI18nPlugin from "@intlify/unplugin-vue-i18n/vite"; 
 
 export default defineConfig({
     vitePlugins: [
@@ -13,6 +14,10 @@ export default defineConfig({
         }),
         autoImport({
             resolvers: [VarletImportResolver({ autoImport: true })]
+        }),
+        VueI18nPlugin({
+            include: "./src/i18n/locales/**.{json}", 
+            compositionOnly: true,
         }),
     ],
     plugins: [
