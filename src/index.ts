@@ -3,9 +3,7 @@ import {createApp} from 'vue';
 import i18n from './i18n/i18n.ts'; // 引入 i18n 配置
 
 import './style.css';
-import Varlet from '@varlet/ui'
 import App from './App.vue';
-import '@varlet/ui/es/style'
 import {createPinia} from "pinia";
 import {router} from "./router.ts";
 // import { createVuetify } from 'vuetify';
@@ -19,5 +17,4 @@ const pinia = createPinia();
 app.use(pinia)
 app.use(router);
 app.use(i18n);
-app.use(Varlet);
 app.mount('#app');
