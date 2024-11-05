@@ -30,12 +30,6 @@ Preview the Production build product:
 pnpm preview
 ```
 
-Clear persistent cache local files
-
-```bash
-pnpm clean
-```
-
 ## Dev Steps
 
 1. 安装依赖，随便用啥包管理器 QAQ
