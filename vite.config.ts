@@ -5,13 +5,28 @@ import autoImport from "unplugin-auto-import/vite";
 import { VarletImportResolver } from "@varlet/import-resolver";
 import { visualizer } from "rollup-plugin-visualizer";
 import VueI18nPlugin from "@intlify/unplugin-vue-i18n/vite";
+import Icons from "unplugin-icons/vite";
+import IconsResolver from "unplugin-icons/resolver";
+
 export default defineConfig({
     plugins: [
         vue(),
         components({
-            resolvers: [VarletImportResolver()],
+            resolvers: [
+                VarletImportResolver(),
+                IconsResolver({
+                    prefix: "i",
+                }),
+            ],
         }),
         autoImport({
+            include: [
+                /\.[tj]sx?$/, // .ts, .tsx, .js, .jsx
+                /\.vue$/,
+                /\.vue\?vue/, // .vue
+                /\.md$/, // .md
+            ],
+            imports: ["vue", "vue-router"],
             resolvers: [VarletImportResolver({ autoImport: true })],
         }),
         visualizer(),
@@ -19,6 +34,7 @@ export default defineConfig({
             include: "./src/i18n/locales/**.{json}",
             compositionOnly: true,
         }),
+        Icons(),
     ],
     server: {
         host: "0.0.0.0",

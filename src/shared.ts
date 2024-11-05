@@ -1,6 +1,5 @@
 import { defineStore } from "pinia";
 import { useLocalStorage } from "@vueuse/core";
-import { computed } from "vue";
 import { parseAuthToken } from "./utils.ts";
 
 export const useAuthTokenStore = defineStore("tokens", () => {

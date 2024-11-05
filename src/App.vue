@@ -19,7 +19,6 @@
 <script setup lang="ts">
 import { useRoute } from "vue-router";
 import { useLocalStorage, useTitle } from "@vueuse/core";
-import { computed } from "vue";
 import i18n from "./i18n/i18n.ts";
 
 const route = useRoute();
