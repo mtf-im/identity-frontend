@@ -8,28 +8,28 @@ import VueI18nPlugin from "@intlify/unplugin-vue-i18n/vite";
 import visualizer from "@farmfe/js-plugin-visualizer";
 
 export default defineConfig({
-  vitePlugins: [
-    vue(),
-    components({
-      resolvers: [VarletImportResolver()],
-    }),
-    autoImport({
-      resolvers: [VarletImportResolver({ autoImport: true })],
-    }),
-    VueI18nPlugin({
-      include: "./src/i18n/locales/**.{json}",
-      compositionOnly: true,
-    }),
-  ],
-  plugins: [postcss(), visualizer()],
-  server: {
-    proxy: {
-      "/api": {
-        target: "http://127.0.0.1:35271",
-      },
-      "/.well-known": {
-        target: "http://127.0.0.1:35271",
-      },
+    vitePlugins: [
+        vue(),
+        components({
+            resolvers: [VarletImportResolver()],
+        }),
+        autoImport({
+            resolvers: [VarletImportResolver({ autoImport: true })],
+        }),
+        VueI18nPlugin({
+            include: "./src/i18n/locales/**.{json}",
+            compositionOnly: true,
+        }),
+    ],
+    plugins: [postcss(), visualizer()],
+    server: {
+        proxy: {
+            "/api": {
+                target: "http://127.0.0.1:35271",
+            },
+            "/.well-known": {
+                target: "http://127.0.0.1:35271",
+            },
+        },
     },
-  },
 });

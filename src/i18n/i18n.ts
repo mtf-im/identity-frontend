@@ -7,13 +7,13 @@ const defaultLocale = navigator.language; // 默认语言为浏览器默认语�
 
 // 创建 i18n 实例
 const i18n = createI18n({
-  locale: defaultLocale,
-  legacy: false,
-  fallbackLocale: "zh-CN", // 当未找到当前语言时使用备用语言
-  messages: {
-    "zh-CN": zhCN,
-    en: en, // 不全，布局测试用
-  },
+    locale: defaultLocale,
+    legacy: false,
+    fallbackLocale: "zh-CN", // 当未找到当前语言时使用备用语言
+    messages: {
+        "zh-CN": zhCN,
+        en: en, // 不全，布局测试用
+    },
 });
 
 export default i18n;
