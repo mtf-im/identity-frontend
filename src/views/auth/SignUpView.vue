@@ -1,13 +1,13 @@
 <script setup lang="ts">
-import {useI18n} from 'vue-i18n'
-import {computed, ref} from "vue";
-import {FetchError, ofetch} from "ofetch";
-import {AuthForParams, AuthTokenResponse} from "../../types.ts";
-import {useAuthTokenStore} from "../../shared.ts";
-import {useCookies} from "@vueuse/integrations/useCookies";
-import {router} from "../../router.ts";
+import { useI18n } from "vue-i18n";
+import { computed, ref } from "vue";
+import { FetchError, ofetch } from "ofetch";
+import { AuthForParams, AuthTokenResponse } from "../../types.ts";
+import { useAuthTokenStore } from "../../shared.ts";
+import { useCookies } from "@vueuse/integrations/useCookies";
+import { router } from "../../router.ts";
 
-const {t} = useI18n()
+const { t } = useI18n();
 
 let authTokenStore = useAuthTokenStore();
 let cookies = useCookies(["token"]);
@@ -26,7 +26,7 @@ let has_error = computed({
   },
   set(newValue: boolean) {
     if (!newValue) error_detail.value = "";
-  }
+  },
 });
 
 async function signup() {
@@ -35,11 +35,11 @@ async function signup() {
     let resp = await ofetch<AuthTokenResponse>("/api/register", {
       method: "POST",
       body: {
-        "username": username.value,
-        "password": password.value,
-        "email": password.value,
-        "nickname": password.value,
-      }
+        username: username.value,
+        password: password.value,
+        email: password.value,
+        nickname: password.value,
+      },
     });
     authTokenStore.addToken(resp.token);
     console.log(authTokenStore.validTokens);
@@ -65,7 +65,6 @@ async function signup() {
     }
   }
 }
-
 </script>
 
 <template>
@@ -73,19 +72,43 @@ async function signup() {
     <var-space id="board">
       <var-space direction="column">
         <h1 class="font-bold text-xl">{{ t("auth.title.signup") }}</h1>
-        <var-divider/>
-        <var-input class="col-group-comp" :placeholder="t('auth.input.email')" v-model="email"></var-input>
-        <var-input class="col-group-comp" :placeholder="t('auth.input.username')" v-model="username"></var-input>
-        <var-input class="col-group-comp" :placeholder="t('auth.input.nickname')" v-model="nickname"></var-input>
-        <var-input class="col-group-comp" :placeholder="t('auth.input.password')" v-model="password"></var-input>
-        <var-divider/>
+        <var-divider />
+        <var-input
+          class="col-group-comp"
+          :placeholder="t('auth.input.email')"
+          v-model="email"
+        ></var-input>
+        <var-input
+          class="col-group-comp"
+          :placeholder="t('auth.input.username')"
+          v-model="username"
+        ></var-input>
+        <var-input
+          class="col-group-comp"
+          :placeholder="t('auth.input.nickname')"
+          v-model="nickname"
+        ></var-input>
+        <var-input
+          class="col-group-comp"
+          :placeholder="t('auth.input.password')"
+          v-model="password"
+        ></var-input>
+        <var-divider />
         <div class="flex justify-end">
-          <var-button class="mx-4 min-w-32" text @click="router.push('/auth/login')">{{
-              t("auth.button.goLogin")
-            }}
+          <var-button
+            class="mx-4 min-w-32"
+            text
+            @click="router.push('/auth/login')"
+            >{{ t("auth.button.goLogin") }}
           </var-button>
           <var-loading description="" :loading="loading">
-            <var-button type="primary" class="min-w-24" color="pink" text-color="black" @click="signup">
+            <var-button
+              type="primary"
+              class="min-w-24"
+              color="pink"
+              text-color="black"
+              @click="signup"
+            >
               {{ t("auth.button.signup") }}
             </var-button>
           </var-loading>
@@ -95,13 +118,15 @@ async function signup() {
   </var-paper>
 
   <var-popup :default-style="false" v-model:show="has_error">
-    <var-result class="result" type="error" :title="error_detail" description="">
+    <var-result
+      class="result"
+      type="error"
+      :title="error_detail"
+      description=""
+    >
       <template #footer>
-        <var-button
-            color="pink"
-            text-color="black"
-            @click="error_detail = ''">
-          {{ t("auth.button.ok")}}
+        <var-button color="pink" text-color="black" @click="error_detail = ''">
+          {{ t("auth.button.ok") }}
         </var-button>
       </template>
     </var-result>
@@ -117,5 +142,4 @@ async function signup() {
 .col-group-comp {
   margin-bottom: 12px;
 }
-
 </style>

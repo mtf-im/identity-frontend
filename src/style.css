@@ -3,14 +3,14 @@
 @tailwind utilities;
 
 body {
-    margin: 0;
-    height: 100vh;
-    overflow: hidden;
+  margin: 0;
+  height: 100vh;
+  overflow: hidden;
 
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 
-    color: var(--color-text);
-    background-color: var(--color-body);
+  color: var(--color-text);
+  background-color: var(--color-body);
 }

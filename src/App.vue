@@ -9,17 +9,17 @@
       &nbsp;
       <RouterLink to="/auth/signup">Go to Sign Up</RouterLink>
     </nav>
-    <br>
+    <br />
   </div>
 
   <main>
-    <RouterView/>
+    <RouterView />
   </main>
 </template>
 <script setup lang="ts">
-import {useRoute} from "vue-router";
-import {useLocalStorage, useTitle} from "@vueuse/core";
-import {computed} from "vue";
+import { useRoute } from "vue-router";
+import { useLocalStorage, useTitle } from "@vueuse/core";
+import { computed } from "vue";
 import i18n from "./i18n/i18n.ts";
 
 const route = useRoute();
@@ -28,12 +28,12 @@ const title = computed(() => {
   if (title === undefined) {
     title = "MtF.im Identity Center";
   } else {
-    title += " - MtF.im ID Center"
+    title += " - MtF.im ID Center";
   }
   return title;
 });
 
 useLocalStorage("locale", i18n.global.locale);
 
-useTitle(title)
+useTitle(title);
 </script>

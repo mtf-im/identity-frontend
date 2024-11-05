@@ -1,16 +1,16 @@
 <script setup lang="ts">
-import {useI18n} from 'vue-i18n'
-import {computed, ref} from "vue";
-import {FetchError, ofetch} from "ofetch";
-import {AuthForParams, AuthTokenResponse} from "../../types.ts";
-import {useAuthTokenStore} from "../../shared.ts";
-import {useCookies} from "@vueuse/integrations/useCookies";
-import {useRouter} from "vue-router";
-import {useUrlSearchParams} from "@vueuse/core";
+import { useI18n } from "vue-i18n";
+import { computed, ref } from "vue";
+import { FetchError, ofetch } from "ofetch";
+import { AuthForParams, AuthTokenResponse } from "../../types.ts";
+import { useAuthTokenStore } from "../../shared.ts";
+import { useCookies } from "@vueuse/integrations/useCookies";
+import { useRouter } from "vue-router";
+import { useUrlSearchParams } from "@vueuse/core";
 
-const {t} = useI18n();
+const { t } = useI18n();
 const router = useRouter();
-const params = useUrlSearchParams<AuthForParams>('hash');
+const params = useUrlSearchParams<AuthForParams>("hash");
 
 let authTokenStore = useAuthTokenStore();
 let tokenCookies = useCookies(["token"]);
@@ -27,7 +27,7 @@ let has_error = computed({
   },
   set(newValue: boolean) {
     if (!newValue) error_detail.value = "";
-  }
+  },
 });
 
 async function login() {
@@ -36,9 +36,9 @@ async function login() {
     let resp = await ofetch<AuthTokenResponse>("/api/login", {
       method: "POST",
       body: {
-        "login": username.value,
-        "password": password.value,
-      }
+        login: username.value,
+        password: password.value,
+      },
     });
     authTokenStore.addToken(resp.token);
     console.log(authTokenStore.validTokens);
@@ -61,7 +61,6 @@ async function login() {
     loading.value = false;
   }
 }
-
 </script>
 
 <template>
@@ -69,17 +68,33 @@ async function login() {
     <var-space id="board">
       <var-space direction="column">
         <h1 class="font-bold text-xl">{{ t("auth.title.login") }}</h1>
-        <var-divider/>
-        <var-input class="col-group-comp" :placeholder="t('auth.input.username')" v-model="username"></var-input>
-        <var-input class="col-group-comp" :placeholder="t('auth.input.password')" v-model="password"></var-input>
-        <var-divider/>
+        <var-divider />
+        <var-input
+          class="col-group-comp"
+          :placeholder="t('auth.input.username')"
+          v-model="username"
+        ></var-input>
+        <var-input
+          class="col-group-comp"
+          :placeholder="t('auth.input.password')"
+          v-model="password"
+        ></var-input>
+        <var-divider />
         <div class="flex justify-end">
-          <var-button class="mx-4 min-w-32" text @click="router.push('/auth/signup')">{{
-              t("auth.button.goSignup")
-            }}
+          <var-button
+            class="mx-4 min-w-32"
+            text
+            @click="router.push('/auth/signup')"
+            >{{ t("auth.button.goSignup") }}
           </var-button>
           <var-loading description="" :loading="loading">
-            <var-button type="primary" class="min-w-24" color="pink" text-color="black" @click="login">
+            <var-button
+              type="primary"
+              class="min-w-24"
+              color="pink"
+              text-color="black"
+              @click="login"
+            >
               {{ t("auth.button.login") }}
             </var-button>
           </var-loading>
@@ -89,13 +104,15 @@ async function login() {
   </var-paper>
 
   <var-popup :default-style="false" v-model:show="has_error">
-    <var-result class="result" type="error" :title="error_detail" description="">
+    <var-result
+      class="result"
+      type="error"
+      :title="error_detail"
+      description=""
+    >
       <template #footer>
-        <var-button
-            color="pink"
-            text-color="black"
-            @click="error_detail = ''">
-          {{ t("auth.button.ok")}}
+        <var-button color="pink" text-color="black" @click="error_detail = ''">
+          {{ t("auth.button.ok") }}
         </var-button>
       </template>
     </var-result>
@@ -111,5 +128,4 @@ async function login() {
 .col-group-comp {
   margin-bottom: 12px;
 }
-
 </style>
