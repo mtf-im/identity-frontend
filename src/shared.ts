@@ -19,7 +19,7 @@ export const useAuthTokenStore = defineStore("tokens", () => {
     });
 
     function addToken(token: string) {
-        let user_id = parseAuthToken(token).user_id;
+        const user_id = parseAuthToken(token).user_id;
         tokenStorage.value.set(user_id, token);
     }
 
