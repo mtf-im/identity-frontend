@@ -12,7 +12,7 @@ const i18n = createI18n({
     fallbackLocale: "zh-CN", // 当未找到当前语言时使用备用语言
     messages: {
         "zh-CN": zhCN,
-        en: en, // 不全，布局测试用
+        en: en,
     },
 });
 

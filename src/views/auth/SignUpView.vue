@@ -2,12 +2,13 @@
 import { useI18n } from "vue-i18n";
 import { computed, ref } from "vue";
 import { FetchError, ofetch } from "ofetch";
-import { AuthForParams, AuthTokenResponse } from "../../types.ts";
+import { AuthTokenResponse } from "../../types.ts";
 import { useAuthTokenStore } from "../../shared.ts";
 import { useCookies } from "@vueuse/integrations/useCookies";
-import { router } from "../../router.ts";
+import { useRouter } from "vue-router";
 
 const { t } = useI18n();
+const router = useRouter();
 
 let authTokenStore = useAuthTokenStore();
 let cookies = useCookies(["token"]);
