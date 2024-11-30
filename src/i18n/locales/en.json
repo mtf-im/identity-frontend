@@ -1,7 +1,7 @@
 {
     "page.title.authorize": "Auth",
     "loading": "Loading...",
-    "authorize.title": "Application \"{name}\" is requesting the following permissions：",
+    "authorize.title": "Application \"{name}\" is requesting the following permissions: ",
     "authorize.permissions.token.title": "MtF ID identifier",
     "authorize.permissions.token.describe": "The identifier of your account's MtF ID, which is used to identify you.",
     "authorize.permissions.profile.title": "Account infomation",

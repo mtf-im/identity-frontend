@@ -1,4 +1,5 @@
 <template>
+    <LanguageSwitch />
     <div v-if="$route.meta.showNav === undefined ? false : $route.meta.showNav">
         <nav>
             <RouterLink to="/">Go to Home</RouterLink>
@@ -17,8 +18,9 @@
     </main>
 </template>
 <script setup lang="ts">
-import { useRoute } from "vue-router";
 import { useLocalStorage, useTitle } from "@vueuse/core";
+import { useRoute } from "vue-router";
+import LanguageSwitch from "./components/LanguageSwitch.vue";
 import i18n from "./i18n/i18n.ts";
 
 const route = useRoute();
