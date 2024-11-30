@@ -16,6 +16,11 @@ export default [
         languageOptions: { parserOptions: { parser: tseslint.parser } },
     },
     { ignores: ["dist/**", "auto-imports.d.ts", "components.d.ts"] },
-    { rules: { "no-undef": "off" } },
+    {
+        rules: {
+            "no-undef": "off",
+            "@typescript-eslint/no-unused-vars": "warn",
+        },
+    },
     eslintConfigPrettier,
 ];

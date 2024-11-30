@@ -27,7 +27,7 @@ watch(
                 `/api/client/${data.client_id}/info`,
             );
             info.value = resp;
-        } catch {
+        } catch (e) {
             info.value = {
                 status: 500,
                 id: -1,
@@ -258,11 +258,6 @@ var scope_detail = data.scope.split(" ").map(get_scope_detail);
 
 .transparent-50 {
     opacity: 0.5;
-}
-
-/* Permission Sensitivity Alert */
-
-.permfield-dangerlv--0 {
 }
 
 .permfield-dangerlv--1 {
