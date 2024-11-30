@@ -1,10 +1,10 @@
 <script setup lang="ts">
 import { useUrlSearchParams } from "@vueuse/core";
-import { AuthorizeParams, ClientInfo } from "../../types.ts";
-import { computed, ref, watch } from "vue";
-import { useRouter } from "vue-router";
-import { useI18n } from "vue-i18n";
 import { ofetch } from "ofetch";
+import { computed, ref, watch } from "vue";
+import { useI18n } from "vue-i18n";
+import { useRouter } from "vue-router";
+import { AuthorizeParams, ClientInfo } from "../../types.ts";
 
 const { t } = useI18n(); // 获取国际化的 `t` 函数
 const data = useUrlSearchParams<AuthorizeParams>("hash");
