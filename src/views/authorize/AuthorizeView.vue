@@ -27,7 +27,7 @@ watch(
                 `/api/client/${data.client_id}/info`,
             );
             info.value = resp;
-        } catch (e) {
+        } catch {
             info.value = {
                 status: 500,
                 id: -1,
