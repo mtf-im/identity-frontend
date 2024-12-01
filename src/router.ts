@@ -33,7 +33,7 @@ const routes: RouteRecordRaw[] = [
         path: "/auth/signup",
         component: SignUpView,
         meta: {
-            title: "Authorize",
+            title: "Sign Up",
             showNav: false,
         },
     },
