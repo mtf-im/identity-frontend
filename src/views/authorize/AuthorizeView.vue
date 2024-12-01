@@ -84,43 +84,43 @@ function get_scope_detail(scope: string) {
     switch (scope) {
         case "openid":
             return {
-                title: t("authorize.permissions.token.title"),
-                desc: t("authorize.permissions.token.describe"),
+                title: "authorize.permissions.token.title",
+                desc: "authorize.permissions.token.describe",
                 icon: "card-account-details",
                 danger: 0,
             };
         case "profile":
             return {
-                title: t("authorize.permissions.profile.title"),
-                desc: t("authorize.permissions.profile.describe"),
+                title: "authorize.permissions.profile.title",
+                desc: "authorize.permissions.profile.describe",
                 icon: "account-circle",
                 danger: 0,
             };
         case "email":
             return {
-                title: t("authorize.permissions.email.title"),
-                desc: t("authorize.permissions.email.describe"),
+                title: "authorize.permissions.email.title",
+                desc: "authorize.permissions.email.describe",
                 icon: "email",
                 danger: 0,
             };
         case "phone":
             return {
-                title: t("authorize.permissions.phone.title"),
-                desc: t("authorize.permissions.phone.describe"),
+                title: "authorize.permissions.phone.title",
+                desc: "authorize.permissions.phone.describe",
                 icon: "phone",
                 danger: 0,
             };
         case "address":
             return {
-                title: t("authorize.permissions.address.title"),
-                desc: t("authorize.permissions.address.describe"),
+                title: "authorize.permissions.address.title",
+                desc: "authorize.permissions.address.describe",
                 icon: "map-marker",
                 danger: 1,
             };
         default:
             return {
-                title: t("authorize.permissions.unknow.title"),
-                desc: t("authorize.permissions.unknow.describe"),
+                title: "authorize.permissions.unknow.title",
+                desc: "authorize.permissions.unknow.describe",
                 icon: "help",
                 danger: 2,
             };
@@ -166,8 +166,8 @@ var scope_detail = data.scope.split(" ").map(get_scope_detail);
                     <var-cell
                         border
                         :icon="x.icon"
-                        :title="x.title"
-                        :description="x.desc"
+                        :title="t(x.title)"
+                        :description="t(x.desc)"
                         :class="'permfield-dangerlv--' + x.danger"
                     >
                         <template #extra>
