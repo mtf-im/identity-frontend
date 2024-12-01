@@ -1,11 +1,11 @@
 <script setup lang="ts">
-import { useI18n } from "vue-i18n";
-import { computed, ref } from "vue";
-import { FetchError, ofetch } from "ofetch";
-import { AuthTokenResponse } from "../../types.ts";
-import { useAuthTokenStore } from "../../shared.ts";
 import { useCookies } from "@vueuse/integrations/useCookies";
+import { FetchError, ofetch } from "ofetch";
+import { computed, ref } from "vue";
+import { useI18n } from "vue-i18n";
 import { useRouter } from "vue-router";
+import { useAuthTokenStore } from "../../shared.ts";
+import { AuthTokenResponse } from "../../types.ts";
 
 const { t } = useI18n();
 const router = useRouter();
@@ -142,17 +142,7 @@ async function signup() {
     </var-popup>
 </template>
 
-<style>
-/* 背景渐变 */
-body {
-    background: linear-gradient(to right, #5bcefa, #f5a9b8);
-    margin: 0;
-    height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
+<style scoped>
 .center-container {
     display: flex;
     align-items: center;
