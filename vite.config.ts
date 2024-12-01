@@ -10,6 +10,7 @@ import components from "unplugin-vue-components/vite";
 import { defineConfig } from "vite";
 import { analyzer } from "vite-bundle-analyzer";
 import Inspect from "vite-plugin-inspect";
+import vueDevTools from "vite-plugin-vue-devtools";
 
 export default defineConfig({
     plugins: [
@@ -43,6 +44,7 @@ export default defineConfig({
             defaultSizes: "gzip",
         }),
         visualizer(),
+        vueDevTools(),
     ],
     server: {
         host: "0.0.0.0",
