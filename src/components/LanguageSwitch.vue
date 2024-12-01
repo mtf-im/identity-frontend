@@ -11,7 +11,7 @@
         </var-menu-select>
     </div>
 </template>
-<script setup>
+<script setup lang="ts">
 import i18n from "../i18n/i18n.ts";
 let locale = i18n.global.locale;
 </script>

@@ -206,32 +206,6 @@ var scope_detail = data.scope.split(" ").map(get_scope_detail);
             </var-paper>
         </div>
     </var-space>
-    <var-divider>
-        <var-icon name="heart-outline" style="margin: 0 16px; color: pink" />
-    </var-divider>
-    <div class="footer">
-        <span
-            >{{ new Date().getFullYear() }} MtF.im is made with
-            <var-icon name="heart" color="pink"
-        /></span>
-    </div>
-    <div class="footer">
-        <span
-            ><a href="/user-agreement">{{
-                t("footer.user-agreement")
-            }}</a></span
-        >
-        <var-divider vertical />
-        <span
-            ><a href="/privacy-policy">{{
-                t("footer.privacy-policy")
-            }}</a></span
-        >
-        <var-divider vertical />
-        <span
-            ><a href="//mtf.im/about-us">{{ t("footer.about-us") }}</a></span
-        >
-    </div>
 </template>
 
 <style scoped>
@@ -271,24 +245,5 @@ var scope_detail = data.scope.split(" ").map(get_scope_detail);
 .permfield-dangerlv--3 {
     background-color: var(--color-danger);
     color: white;
-}
-
-.footer {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    color: #333;
-}
-
-.footer a {
-    font-size: 14px;
-    color: #888;
-    text-decoration: none;
-}
-
-.footer span {
-    font-size: 14px;
-    color: #888;
-    text-decoration: none;
 }
 </style>

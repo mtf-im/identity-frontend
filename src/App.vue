@@ -16,6 +16,10 @@
     <main>
         <RouterView />
     </main>
+
+    <footer>
+        <FooterBar />
+    </footer>
 </template>
 <script setup lang="ts">
 import { useLocalStorage, useTitle } from "@vueuse/core";
