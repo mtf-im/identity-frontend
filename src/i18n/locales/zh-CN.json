@@ -17,7 +17,14 @@
     "authorize.button.cancel": "取消",
     "authorize.button.approve": "接受",
     "error.title": "出错啦！",
+    "error.conflict": "此账户已存在",
+    "error.forbidden": "你没有权限注册",
+    "error.validation_error": "验证出现问题",
     "error.tip": "错误信息：{error}",
+    "error.invalid_credential": "错误的账号 / 密码",
+    "finish.title": "成功！",
+    "finish.signinup.tip.redirect": "登录成功！将跳转至上一页面...",
+    "finish.signinup.tip.home": "登录成功！将跳转至首页...",
     "footer.user-agreement": "用户协议",
     "footer.privacy-policy": "隐私政策",
     "footer.about-us": "关于我们",
@@ -31,6 +38,5 @@
     "auth.button.signup": "注册",
     "auth.button.goLogin": "去登录",
     "auth.button.goSignup": "去注册",
-    "error.invalid_credential": "错误的账号 / 密码",
     "auth.button.ok": "好"
 }

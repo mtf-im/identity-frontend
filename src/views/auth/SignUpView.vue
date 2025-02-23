@@ -5,10 +5,13 @@ import { computed, ref } from "vue";
 import { useI18n } from "vue-i18n";
 import { useRouter } from "vue-router";
 import { useAuthTokenStore } from "../../shared.ts";
-import { AuthTokenResponse } from "../../types.ts";
+import { AuthForParams, AuthTokenResponse } from "../../types.ts";
+import { useUrlSearchParams } from "@vueuse/core";
 
 const { t } = useI18n();
 const router = useRouter();
+const params = useUrlSearchParams<AuthForParams>("hash");
+const show_success = ref(false);
 
 let authTokenStore = useAuthTokenStore();
 let cookies = useCookies(["token"]);
@@ -42,6 +45,17 @@ async function signup() {
                 nickname: nickname.value,
             },
         });
+
+        // 注册成功后显示成功弹窗
+        show_success.value = true;
+        // 判定跳转
+        setTimeout(() => {
+            if (params.for) {
+                router.push(params.for);
+            } else {
+                router.push("/");
+            }
+        }, 3000);
         authTokenStore.addToken(resp.token);
         console.log(authTokenStore.validTokens);
         cookies.set("token", resp.token);
@@ -126,8 +140,8 @@ async function signup() {
         <var-result
             class="result"
             type="error"
-            :title="error_detail"
-            description=""
+            :title="t('error.title')"
+            :description="t(error_detail)"
         >
             <template #footer>
                 <var-button
@@ -137,6 +151,19 @@ async function signup() {
                 >
                     {{ t("auth.button.ok") }}
                 </var-button>
+            </template>
+        </var-result>
+    </var-popup>
+    <var-popup :default-style="false" v-model:show="show_success">
+        <var-result>
+            class="result" type="success" :title="t('finish.title')"
+            <template #description>
+                <span v-if="params.for">
+                    {{ t("finish.signinup.tip.redirect") }}
+                </span>
+                <span v-else>
+                    {{ t("finish.signinup.tip.home") }}
+                </span>
             </template>
         </var-result>
     </var-popup>

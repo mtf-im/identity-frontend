@@ -11,6 +11,7 @@ import { AuthForParams, AuthTokenResponse } from "../../types.ts";
 const { t } = useI18n();
 const router = useRouter();
 const params = useUrlSearchParams<AuthForParams>("hash");
+const show_success = ref(false);
 
 let authTokenStore = useAuthTokenStore();
 let tokenCookies = useCookies(["token"]);
@@ -40,13 +41,24 @@ async function login() {
                 password: password.value,
             },
         });
+
+        // 登录成功后显示成功弹窗
+        show_success.value = true;
+        // 判定跳转
+        setTimeout(() => {
+            if (params.for) {
+                router.push(params.for);
+            } else {
+                router.push("/");
+            }
+        }, 3000);
         authTokenStore.addToken(resp.token);
         console.log(authTokenStore.validTokens);
         tokenCookies.set("token", resp.token);
         loading.value = false;
-        if (params.for) {
-            await router.push(params.for);
-        }
+        //if (params.for) {
+        //    await router.push(params.for);
+        //}
     } catch (e) {
         if (!(e instanceof FetchError)) {
             console.log(e);
@@ -111,8 +123,8 @@ async function login() {
         <var-result
             class="result"
             type="error"
-            :title="error_detail"
-            description=""
+            :title="t('error.title')"
+            :description="t(error_detail)"
         >
             <template #footer>
                 <var-button
@@ -122,6 +134,20 @@ async function login() {
                 >
                     {{ t("auth.button.ok") }}
                 </var-button>
+            </template>
+        </var-result>
+    </var-popup>
+
+    <var-popup :default-style="false" v-model:show="show_success">
+        <var-result>
+            class="result" type="success" :title="t('finish.title')"
+            <template #description>
+                <span v-if="params.for">
+                    {{ t("finish.signinup.tip.redirect") }}
+                </span>
+                <span v-else>
+                    {{ t("finish.signinup.tip.home") }}
+                </span>
             </template>
         </var-result>
     </var-popup>

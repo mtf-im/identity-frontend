@@ -17,7 +17,13 @@
     "authorize.button.cancel": "Cancel",
     "authorize.button.approve": "Accept",
     "error.title": "Error!",
+    "error.conflict": "Account already exists!",
+    "error.forbidden": "Sign up forbidden.",
+    "error.validation_error": "Validation Error!",
     "error.tip": "Error infomation: {error}",
+    "error.invalid_credential": "Invalid credential",
+    "finish.title": "Finish!",
+    "finish.signup.tip": "Account created successfully! Now we're redirecting you to the login page...",
     "footer.user-agreement": "User Agreement",
     "footer.privacy-policy": "Privacy Policy",
     "footer.about-us": "About us",
@@ -31,6 +37,5 @@
     "auth.button.signup": "Sign Up",
     "auth.button.goLogin": "Go Log in",
     "auth.button.goSignup": "Go Sign Up",
-    "auth.button.ok": "OK",
-    "error.invalid_credential": "Invalid credential"
+    "auth.button.ok": "OK"
 }
